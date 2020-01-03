@@ -1,0 +1,27 @@
+* {
+  text-align: center;
+}
+
+body {
+  background: #000000;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+#addText {
+  width: 450px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: left
+}
+
+#addButton {
+  width: 450px
+  height: 30px
+}
