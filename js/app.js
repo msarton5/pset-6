@@ -2,13 +2,22 @@ window.onload = function() {
     document.getElementById("addButton").onclick = addItemToList;
 }
 
+const chores = [];
+
 const addItemToList = function() {
-  // var input = document.getElementById("addText");
-  let canvas = document.getElementById("toDoCanvas");
-  let ctx = canvas.getContext("2d");
+  const text = document.getElementById("addText").value;
+  // let canvas = document.getElementById("toDoCanvas");
 
-let text = prompt("Message:");
+  // let text = prompt("Message:");
 
-  ctx.font = "48px Sans-serif";
-  ctx.strokeText(text, 30 , 70, canvas.width - 30);
+  const chore = {
+    id: chores.length + 1,
+    priority: "low",
+    content: text,
+    complete: false
+  };
+
+  chores.push(chore);
+
+  document.getElementById("addText").value = "";
 }
