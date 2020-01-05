@@ -24,4 +24,9 @@ h1 {
 #addButton {
   width: 450px
   height: 30px
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+}
+
+#subButton {
+  color: #f56700
 }
