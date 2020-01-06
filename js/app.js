@@ -1,25 +1,26 @@
 window.onload = function() {
-    document.getElementById("addButton").onclick = addchoreToList;
+    document.getElementById("addButton").onclick = addChoreToList;
 }
 
 const chores = [];
 
-const addchoreToList = function() {
+const addChoreToList = function() {
   const text = document.getElementById("addText").value;
   // let canvas = document.getElementById("toDoCanvas");
 
   // let text = prompt("Message:");
 
   const chore = {
-    id: chores.length + 1,
+    id: chores.length,
     priority: "low",
     content: text,
     complete: false
   };
-
   chores.push(chore);
 
   document.getElementById("addText").value = "";
+
+  renderChores();
 }
 
 const renderChores = function() {
@@ -35,7 +36,8 @@ const renderChores = function() {
 
     span1.innerHTML = "!";
     span2.innerHTML = chores[i].content;
-    span3.innerHTML = "&#10004;";
+    span3.innerHTML = "&#10004;"; // check mark
+    span3.onclick = document.getElementById("&#10004").style.color = "black";
     span3.className = chores[i].complete === true ? "done" : "not-done";
     span4.innerHTML = "&#10006;";
     span4.id = "delete-" + chores[i].id;
