@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #555555;
+  background: #746893
 }
 
 
@@ -11,7 +11,7 @@ h1 {
     text-align: center;
     font-size: 30px;
     color: #ffffff;
-    font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 #addText {
@@ -21,10 +21,10 @@ h1 {
   text-align: left
 }
 
-#addButton {
-  width: 50px
+.addButton {
+  width: 80px
   height: 30px
-  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 

@@ -19,7 +19,7 @@ const addChoreToList = function() {
   chores.push(chore);
 
   document.getElementById("addText").value = "";
-
++
   renderChores();
 }
 
@@ -37,9 +37,10 @@ const renderChores = function() {
     span1.innerHTML = "!";
     span2.innerHTML = chores[i].content;
     span3.innerHTML = "&#10004;"; // check mark
-    span3.onclick = document.getElementById("&#10004").style.color = "black";
+    // span3.onclick =
     span3.className = chores[i].complete === true ? "done" : "not-done";
-    span4.innerHTML = "&#10006;";
+    span4.innerHTML = "&#10006;"; // x
+    // span4.onclick =
     span4.id = "delete-" + chores[i].id;
 
     li.append(span1);
