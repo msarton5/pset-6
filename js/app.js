@@ -15,7 +15,7 @@ const addChoreToList = function() {
   chores.push(chore);
 
   document.getElementById("addText").value = "";
-  renderChores();
+    // renderChores();
 }
 
 const renderChores = function() {
