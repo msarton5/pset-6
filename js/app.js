@@ -15,7 +15,6 @@ const addChoreToList = function() {
   chores.push(chore);
 
   document.getElementById("addText").value = "";
-+
   renderChores();
 }
 
@@ -32,32 +31,29 @@ const renderChores = function() {
 
     span1.innerHTML = "!"; // exclamation point
       span1.onclick = prioritizeListItem();
-      span1.setAttribute("id", "spanOne");
     span2.innerHTML = chores[i].content;
-      span2.setAttribute("id", "spanTwo");
     span3.innerHTML = "&#10004;"; // check mark
       span3.className = chores[i].complete === true ? "done" : "not-done";
       span3.onclick = markAsDone();
-      span3.setAttribute("id" , "spanThree");
     span4.innerHTML = "&#10006;"; // x
       span4.onclick = makeTheThingDisappear();
-      span4.setAttribute("id" , "spanFour");
-      span4.id = "delete-" + chores[i].id;
+    span1.setAttribute("id" , "prioritize" + i);
+    span2.setAttribute("id" , "list" + i);
+    span3.setAttribute("id" , "check" + i);
+    span4.setAttribute("id" , "delete" + i);
 
 const prioritizeListItem = function() {
-  span1.setAttribute("id" , "spanOne");
-
+  Number(this.id.charAt(10))
 }
 
 const markAsDone = function() {
-  span3.setAttribute("id" , "spanThree");
+  Number(this.id.charAt(5))
 }
 
 const makeTheThingDisappear = function() {
-  span4.setAttribute("id" , "spanFour");
-  var element = document.getElementById(spanThree);
-    element.parentNode.removeChild(spanOne);
-    element.parentNode.removeChild(spanFour);
+  Number(this.id.charAt(6))
+  var remove = document.getElementById(prioritize);
+   remove.parentNode.removeChild(remove);
 }
 
     li.append(span1);
