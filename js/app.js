@@ -42,20 +42,6 @@ const renderChores = function() {
     span3.setAttribute("id" , "check" + i);
     span4.setAttribute("id" , "delete" + i);
 
-const prioritizeListItem = function() {
-  Number(this.id.charAt(10))
-}
-
-const markAsDone = function() {
-  Number(this.id.charAt(5))
-}
-
-const makeTheThingDisappear = function() {
-  Number(this.id.charAt(6))
-  var remove = document.getElementById(prioritize);
-   remove.parentNode.removeChild(remove);
-}
-
     li.append(span1);
     li.append(span2);
     li.append(span3);
@@ -63,3 +49,17 @@ const makeTheThingDisappear = function() {
     list.append(li);
   }
 };
+
+const prioritizeListItem = function() {
+  var number = Number(this.id.charAt(10))
+}
+
+const markAsDone = function() {
+  var number = Number(this.id.charAt(5))
+}
+
+const makeTheThingDisappear = function() {
+  var number = Number(this.id.charAt(6))
+  var remove = document.getElementById(prioritize);
+   remove.parentNode.removeChild(remove);
+}
