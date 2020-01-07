@@ -21,7 +21,7 @@ h1 {
   text-align: left
 }
 
-.addButton {
+#addButton {
   width: 80px
   height: 30px
   font-family: "Comic Sans MS", cursive, sans-serif;
