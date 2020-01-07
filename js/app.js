@@ -15,7 +15,7 @@ const addChoreToList = function() {
   chores.push(chore);
 
   document.getElementById("addText").value = "";
-    // renderChores();
+    renderChores();
 }
 
 const renderChores = function() {
@@ -40,7 +40,7 @@ const renderChores = function() {
     span1.setAttribute("id" , "prioritize" + i);
     span2.setAttribute("id" , "list" + i);
     span3.setAttribute("id" , "check" + i);
-    span4.setAttribute("id" , "delete" + i);
+    span4.setAttribute("id" , "del" + i);
 
     li.append(span1);
     li.append(span2);
@@ -52,14 +52,21 @@ const renderChores = function() {
 
 const prioritizeListItem = function() {
   var number = Number(this.id.charAt(10))
+  chore.priority = high
 }
 
 const markAsDone = function() {
   var number = Number(this.id.charAt(5))
+  document.getElementById("priority").style.color = "green";
+  document.getElementById("list").style.color = "green";
+  document.getElementById("check").style.color = "green";
+  document.getElementById("del").style.color = "green";
 }
 
 const makeTheThingDisappear = function() {
-  var number = Number(this.id.charAt(6))
+  var number = Number(this.id.charAt(3))
   var remove = document.getElementById(prioritize);
-   remove.parentNode.removeChild(remove);
+  var remove2 = document.getElementById(list);
+  var remove3 = document.getElementById(check);
+  var remove4 = document.getElementById(del);
 }
