@@ -30,7 +30,7 @@ function renderChores2() {
   list.innerHTML = "";
 
   for (let i = 0; i < chores.length; i++) {
-    const li = document.createElement("li");
+    const div = document.createElement("div");
     const exclamation = document.createElement("BUTTON");
     const userInput = document.createElement("span");
     const checkMark = document.createElement("BUTTON");
@@ -39,152 +39,58 @@ function renderChores2() {
     exclamation.innerHTML = "!"; // exclamation point
     //  exclamation.onclick = prioritizeListItem();
       exclamation.style.fontWeight = "bold";
+      exclamation.onclick = prioritizeListItem;
     userInput.innerHTML = chores[i].content;
       userInput.style.border = "2px solid black";
-      userInput.style.background = "#ffc0cb";
+      userInput.style.background = chores[i].complete === true ? "green" : "#ffc0cb";
     checkMark.innerHTML = "&#10004;"; // check mark
       checkMark.className = chores[i].complete === true ? "done" : "not-done";
       checkMark.style.color = "green";
-      //checkMark.onclick = markAsDone();
+      checkMark.onclick = markAsDone;
     xMark.innerHTML = "&#10006;"; // x
       xMark.style.color = "red";
-      //xMark.onclick = makeTheThingDisappear();
-    exclamation.setAttribute("id" , "prioritize");
+      xMark.onclick = makeTheThingDisappear;
+    exclamation.setAttribute("id" , "prioritize-" + i);
     userInput.setAttribute("id" , "list");
-    checkMark.setAttribute("id" , "check");
-    xMark.setAttribute("id" , "del");
+    checkMark.setAttribute("id" , "check-" + i);
+    xMark.setAttribute("id" , "del-" + i);
 
-    li.append(exclamation);
-    li.append(userInput);
-    li.append(checkMark);
-    li.append(xMark);
-    list.append(li);
-    console.log(li);
+    div.append(exclamation);
+    div.append(userInput);
+    div.append(checkMark);
+    div.append(xMark);
+    list.append(div);
   }
 }
 
 const prioritizeListItem = function() {
-  chore.priority = "high";
-  const list = document.getElementById("list");
-  list.innerHTML = "";
+  const index = this.id.substring(11);
 
-  for (let i = 0; i < chores.length; i++) {
-    const li = document.createElement("li");
-    const exclamation = document.createElement("BUTTON");
-    const userInput = document.createElement("span");
-    const checkMark = document.createElement("BUTTON");
-    const xMark = document.createElement("BUTTON");
+  if (chores[index].priority === "low") {
+    chores[index].priority = "high";
 
-    exclamation.innerHTML = "!"; // exclamation point
-      // exclamation.onclick = prioritizeListItem();
-      exclamation.style.fontWeight = "bold";
-    userInput.innerHTML = chores[i].content;
-      userInput.style.border = "2px solid black";
-      userInput.style.background = "#ffc0cb";
-    checkMark.innerHTML = "&#10004;"; // check mark
-      checkMark.className = chores[i].complete === true ? "done" : "not-done";
-      checkMark.style.color = "green";
-      //checkMark.onclick = markAsDone();
-    xMark.innerHTML = "&#10006;"; // x
-      xMark.style.color = "red";
-      //xMark.onclick = makeTheThingDisappear();
-    exclamation.setAttribute("id" , "prioritize");
-    userInput.setAttribute("id" , "list");
-    checkMark.setAttribute("id" , "check");
-    xMark.setAttribute("id" , "del");
+    const chore = chores.splice(index, 1)[0];
+    chores.unshift(chore);
+  } else {
+    chores[index].priority = "low";
 
-    li.append(exclamation);
-    li.append(userInput);
-    li.append(checkMark);
-    li.append(xMark);
-    list.append(li);
-    console.log(li);
+    const chore = chores.splice(index, 1)[0];
+    chores.push(chore);
   }
+
+  renderChores2();
 }
 
 const markAsDone = function() {
-  document.getElementById("userInput").style.background = "green";
-  const list = document.getElementById("list");
-  list.innerHTML = "";
+  const index = this.id.substring(6);
 
-  for (let i = 0; i < chores.length; i++) {
-    const li = document.createElement("li");
-    const exclamation = document.createElement("BUTTON");
-    const userInput = document.createElement("span");
-    const checkMark = document.createElement("BUTTON");
-    const xMark = document.createElement("BUTTON");
+  chores[index].complete = !chores[index].complete;
 
-    exclamation.innerHTML = "!"; // exclamation point
-      // exclamation.onclick = prioritizeListItem();
-      exclamation.style.fontWeight = "bold";
-    userInput.innerHTML = chores[i].content;
-      userInput.style.border = "2px solid black";
-      userInput.style.background = "#ffc0cb";
-    checkMark.innerHTML = "&#10004;"; // check mark
-      checkMark.className = chores[i].complete === true ? "done" : "not-done";
-      checkMark.style.color = "green";
-      //checkMark.onclick = markAsDone();
-    xMark.innerHTML = "&#10006;"; // x
-      xMark.style.color = "red";
-      //xMark.onclick = makeTheThingDisappear();
-    exclamation.setAttribute("id" , "prioritize");
-    userInput.setAttribute("id" , "list");
-    checkMark.setAttribute("id" , "check");
-    xMark.setAttribute("id" , "del");
-
-    li.append(exclamation);
-    li.append(userInput);
-    li.append(checkMark);
-    li.append(xMark);
-    list.append(li);
-    console.log(li);
-  }
+  renderChores2();
 }
 
 const makeTheThingDisappear = function() {
-  var element = document.getElementById(prioritize);
-      element.remove();
-  var elementTwo = document.getElementById(list);
-      element.remove();
-  var elementThree = document.getElementById(check);
-      element.remove();
-  var element = document.getElementById(del);
-      element.remove();
-
-
-    const list = document.getElementById("list");
-    list.innerHTML = "";
-
-    for (let i = 0; i < chores.length; i++) {
-      const li = document.createElement("li");
-      const exclamation = document.createElement("BUTTON");
-      const userInput = document.createElement("span");
-      const checkMark = document.createElement("BUTTON");
-      const xMark = document.createElement("BUTTON");
-
-      exclamation.innerHTML = "!"; // exclamation point
-      //  exclamation.onclick = prioritizeListItem();
-        exclamation.style.fontWeight = "bold";
-      userInput.innerHTML = chores[i].content;
-        userInput.style.border = "2px solid black";
-        userInput.style.background = "#ffc0cb";
-      checkMark.innerHTML = "&#10004;"; // check mark
-        checkMark.className = chores[i].complete === true ? "done" : "not-done";
-        checkMark.style.color = "green";
-        //checkMark.onclick = markAsDone();
-      xMark.innerHTML = "&#10006;"; // x
-        xMark.style.color = "red";
-        //xMark.onclick = makeTheThingDisappear();
-      exclamation.setAttribute("id" , "prioritize");
-      userInput.setAttribute("id" , "list");
-      checkMark.setAttribute("id" , "check");
-      xMark.setAttribute("id" , "del");
-
-      li.append(exclamation);
-      li.append(userInput);
-      li.append(checkMark);
-      li.append(xMark);
-      list.append(li);
-      console.log(li);
-    }
+  const index = this.id.substring(4);
+  chores.splice(index, 1);
+  renderChores2();
 }
