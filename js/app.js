@@ -4,8 +4,6 @@ window.onload = function() {
 
 const chores = [];
 
-
-
 const addChoreToList = function() {
   const text = document.getElementById("addText").value;
   const chore = {
@@ -66,8 +64,8 @@ function renderChores2() {
 }
 
 const prioritizeListItem = function() {
-  chores.priority = "high";
-  renderChores2(); // makes it rerender after changing the priority
+
+chores.priority = "high";
 }
 
 const markAsDone = function() {
