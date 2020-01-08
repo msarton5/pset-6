@@ -31,12 +31,6 @@ function renderChores2() {
   const list = document.getElementById("list");
   list.innerHTML = "";
 
-  for (let i = 0; i < chores.length; i++) { // added this
-    if (chores.priority == "high") {
-      // print those out first
-    }
-  }
-
   for (let i = 0; i < chores.length; i++) {
     const li = document.createElement("li");
     const exclamation = document.createElement("BUTTON");
