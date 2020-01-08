@@ -4,6 +4,8 @@ window.onload = function() {
 
 const chores = [];
 
+
+
 const addChoreToList = function() {
   const text = document.getElementById("addText").value;
   const chore = {
@@ -28,6 +30,12 @@ const addChoreToList = function() {
 function renderChores2() {
   const list = document.getElementById("list");
   list.innerHTML = "";
+
+  for (let i = 0; i < chores.length; i++) { // added this
+    if (chores.priority == "high") {
+      // print those out first
+    }
+  }
 
   for (let i = 0; i < chores.length; i++) {
     const li = document.createElement("li");
@@ -65,6 +73,7 @@ function renderChores2() {
 
 const prioritizeListItem = function() {
   chores.priority = "high";
+  renderChores2(); // makes it rerender after changing the priority
 }
 
 const markAsDone = function() {
@@ -72,8 +81,12 @@ const markAsDone = function() {
 }
 
 const makeTheThingDisappear = function() {
-  var remove = document.getElementById(prioritize);
+  var remove = document.getElementById(exclamation);
+    exclamation.parentNode.removeChild(exclamation);
   var remove2 = document.getElementById(list);
+    remove2.parentNode.removeChild(remove2);
   var remove3 = document.getElementById(check);
+    check.parentNode.removeChild(check);
   var remove4 = document.getElementById(del);
+    del.parentNode.removeChild(del);
 }
