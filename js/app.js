@@ -64,12 +64,14 @@ function renderChores2() {
 }
 
 const prioritizeListItem = function() {
+  chores.priority = "high";
+  renderChores2();
 
-chores.priority = "high";
 }
 
 const markAsDone = function() {
   document.getElementById("userInput").style.background = "green";
+  renderChores2();
 }
 
 const makeTheThingDisappear = function() {
@@ -81,4 +83,6 @@ const makeTheThingDisappear = function() {
     check.parentNode.removeChild(check);
   var remove4 = document.getElementById(del);
     del.parentNode.removeChild(del);
+
+    renderChores2();
 }
