@@ -22,55 +22,56 @@ const addChoreToList = function() {
       var template = 'list';
         render(template, document.querySelector('#list'));
     }
+    renderChores2();
 }
 
-const renderChores = function() {
+function renderChores2() {
   const list = document.getElementById("list");
   list.innerHTML = "";
 
   for (let i = 0; i < chores.length; i++) {
     const li = document.createElement("li");
-    const span1 = document.createElement("span");
-    const span2 = document.createElement("span");
-    const span3 = document.createElement("span");
-    const span4 = document.createElement("span");
+    const exclamation = document.createElement("BUTTON");
+    const userInput = document.createElement("span");
+    const checkMark = document.createElement("BUTTON");
+    const xMark = document.createElement("BUTTON");
 
-    span1.innerHTML = "!"; // exclamation point
-      span1.onclick = prioritizeListItem();
-    span2.innerHTML = chores[i].content;
-    span3.innerHTML = "&#10004;"; // check mark
-      span3.className = chores[i].complete === true ? "done" : "not-done";
-      span3.onclick = markAsDone();
-    span4.innerHTML = "&#10006;"; // x
-      span4.onclick = makeTheThingDisappear();
-    span1.setAttribute("id" , "prioritize" + i);
-    span2.setAttribute("id" , "list" + i);
-    span3.setAttribute("id" , "check" + i);
-    span4.setAttribute("id" , "del" + i);
+    exclamation.innerHTML = "!"; // exclamation point
+      exclamation.onclick = prioritizeListItem();
+      exclamation.style.fontWeight = "bold";
+    userInput.innerHTML = chores[i].content;
+      userInput.style.border = "2px solid black";
+      userInput.style.background = "#ffc0cb";
+    checkMark.innerHTML = "&#10004;"; // check mark
+      checkMark.className = chores[i].complete === true ? "done" : "not-done";
+      checkMark.style.color = "green";
+      //checkMark.onclick = markAsDone();
+    xMark.innerHTML = "&#10006;"; // x
+      xMark.style.color = "red";
+      //xMark.onclick = makeTheThingDisappear();
+    exclamation.setAttribute("id" , "prioritize");
+    userInput.setAttribute("id" , "list");
+    checkMark.setAttribute("id" , "check");
+    xMark.setAttribute("id" , "del");
 
-    li.append(span1);
-    li.append(span2);
-    li.append(span3);
-    li.append(span4);
+    li.append(exclamation);
+    li.append(userInput);
+    li.append(checkMark);
+    li.append(xMark);
     list.append(li);
+    console.log(li);
   }
-};
+}
 
 const prioritizeListItem = function() {
-  var number = Number(this.id.charAt(10))
-  chore.priority = high
+  chores.priority = "high";
 }
 
 const markAsDone = function() {
-  var number = Number(this.id.charAt(5))
-  document.getElementById("priority").style.color = "green";
-  document.getElementById("list").style.color = "green";
-  document.getElementById("check").style.color = "green";
-  document.getElementById("del").style.color = "green";
+  document.getElementById("userInput").style.background = "green";
 }
 
 const makeTheThingDisappear = function() {
-  var number = Number(this.id.charAt(3))
   var remove = document.getElementById(prioritize);
   var remove2 = document.getElementById(list);
   var remove3 = document.getElementById(check);
